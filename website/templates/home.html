@@ -7,7 +7,10 @@
         <div class="container">
             <h1 class="display-4">Welcome to our Barbershop</h1>
             <p class="lead">We offer a wide range of services to help you look and feel your best.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Book an Appointment</a>
+            <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Book an Appointment</a> -->
+            <form method="POST">
+                <button class="btn btn-primary btn-lg" type="submit" name="book-appointment" value="book-appointment">Book an Appointment</button>
+            </form>
         </div>
     </div>
 
@@ -16,17 +19,23 @@
             <div class="col-md-4">
                 <h2>Haircuts</h2>
                 <p>Our experienced barbers will give you a haircut that suits your style and personality.</p>
-                <a class="btn btn-secondary" href="#" role="button">Learn more</a>
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#haircut-details" aria-expanded="false" aria-controls="haircut-details">
+                    Learn more
+                </button>
             </div>
             <div class="col-md-4">
                 <h2>Beard Trims</h2>
                 <p>Our beard experts will help you maintain a well-groomed and stylish beard.</p>
-                <a class="btn btn-secondary" href="#" role="button">Learn more</a>
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#beard-trim-details" aria-expanded="false" aria-controls="beard-trim-details">
+                    Learn more
+                </button>
             </div>
             <div class="col-md-4">
                 <h2>Shaves</h2>
                 <p>Experience the luxury of a traditional hot towel shave with our skilled barbers.</p>
-                <a class="btn btn-secondary" href="#" role="button">Learn more</a>
+                <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#shave-details" aria-expanded="false" aria-controls="shave-details">
+                    Learn more
+                </button>
             </div>
         </div>
 
