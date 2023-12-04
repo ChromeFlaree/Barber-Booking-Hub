@@ -1,12 +1,14 @@
-from flask import Flask, Blueprint, render_template
+from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from .services import get_user_info 
 
 views = Blueprint('views', __name__)
 
-@views.route('/')
+@views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    if request.method == "POST":
+        return redirect(url_for('booking.book_ticket'))
     return render_template("home.html", user=current_user)
 
 @views.route('/profile')
