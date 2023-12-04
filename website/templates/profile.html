@@ -13,20 +13,20 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-4 text-center">
-                <img src="{{ user_info.profile_image }}" alt="Profile Image" class="img-fluid rounded-circle">
+                <img src="{{ user.profile_image }}" alt="Profile Image" class="img-fluid rounded-circle">
               </div>
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="name" class="font-weight-bold">Username:</label>
-                  <p id="name" class="form-control-static">{{ user_info.name }}</p>
+                  <p id="name" class="form-control-static">{{ user.first_name }}</p>
                 </div>
                 <div class="form-group">
                   <label for="email" class="font-weight-bold">Email:</label>
-                  <p id="email" class="form-control-static">{{ user_info.email }}</p>
+                  <p id="email" class="form-control-static">{{ user.email }}</p>
                 </div>
                 <div class="form-group">
                   <label for="booking" class="font-weight-bold">Booking:</label>
-                  <p id="booking" class="form-control-static">{{ user_info.booking }}</p>
+                  <p id="booking" class="form-control-static">{{ user.booking }}</p>
                 </div>
               </div>
             </div>
