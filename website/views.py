@@ -1,6 +1,5 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
-from .services import get_user_info 
 
 views = Blueprint('views', __name__)
 
@@ -14,5 +13,4 @@ def home():
 @views.route('/profile')
 @login_required
 def profile():
-    user_info = get_user_info(current_user.id)
-    return render_template('profile.html', user_info=user_info, user=current_user)
+    return render_template('profile.html', user=current_user)
