@@ -96,3 +96,33 @@ footer {
         background-color: #ffffff;
     }
 }
+
+.flash-messages {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 1000;
+}
+  
+.flash-message {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+  
+.flash-message.success {
+    background-color: #28a745;
+    color: #fff;
+}
+  
+.flash-message.error {
+    background-color: #dc3545;
+    color: #fff;
+}
+  
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

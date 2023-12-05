@@ -15,13 +15,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if sha256_crypt.verify(password, user.password):
-                flash("Logged in successfully!", category='success')
+                flash("🎉 Logged In Successfully! Welcome back!", category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash("Incorrect password, try again", category='error')
+                flash("❌ Incorrect password, please try again.", category='error')
         else:
-            flash("Email does not exist", category='error')
+            flash("⚠️ Email does not exist. Please check your email or sign up.", category='error')
 
     return render_template("login.html", user=current_user)
 
@@ -29,6 +29,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash("👋 You have been logged out. See you again soon!", category='info')
     return redirect(url_for('auth.login'))
 
 @auth.route('/sign-up', methods=['GET', 'POST'])
@@ -42,20 +43,20 @@ def sign_up():
         user = User.query.filter_by(email=email).first()
 
         if user:
-            flash("Email already exists", category='error')
+            flash("⚠️ Email already exists. Please use a different email.", category='error')
         elif len(email) == 0:
-            flash("Email can't be empty", category='error')
+            flash("⚠️ Email can't be empty. Please enter a valid email.", category='error')
         elif len(firstName) < 2:
-            flash("First Name must be greater than 1 character", category='error')
+            flash("⚠️ First Name must be greater than 1 character. Please provide a valid name.", category='error')
         elif len(password1) < 7:
-            flash("Password must be atleast 7 characters", category='error')
+            flash("⚠️ Password must be at least 7 characters. Please use a stronger password.", category='error')
         elif password1 != password2:
-            flash("Passwords don't match", category='error')
+            flash("⚠️ Passwords don't match. Please make sure the passwords match.", category='error')
         else:
             new_user = User(email=email, first_name=firstName, password=sha256_crypt.hash(password1))
             db.session.add(new_user)
             db.session.commit()
-            flash("Account created!", category='success')
+            flash("🎉 Account Created Successfully! Welcome to our community.", category='success')
             return redirect(url_for('auth.login'))
 
     return render_template("sign_up.html", user=current_user)
