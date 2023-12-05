@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid bg-dark text-white">
+        <div class="container">
+            <h1 class="display-4">Welcome to Barber Hub - Where Style Meets Precision</h1>
+            <p class="lead">Book your next cut and join the grooming revolution today.</p>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#appointmentModal">
+                Book Appointment
+            </button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="about-description">Hair Cuts</h2>
+                <p class="about-description">Discover our diverse range of expertly crafted haircuts, tailored to suit your style. From classic to contemporary, our skilled barbers ensure a sharp, fresh look with every visit. Book your appointment now and experience excellence in grooming at Barber Hub!</p>
+                <button class="btn btn-info" data-toggle="modal" data-target="#haircutModal">
+                    Learn More
+                </button>
+            </div>
+            <div class="col-md-4">
+                <h2 class="about-description">Beard Trims</h2>
+                <p class="about-description">Revamp your look with our expert beard trims at Barber Hub! Our skilled barbers specialize in precision grooming to sculpt, shape, and refine your facial hair, ensuring you leave with a sharp and stylish finish every time.</p>
+                <button class="btn btn-info" data-toggle="modal" data-target="#beardTrimModal">
+                    Learn More
+                </button>
+            </div>
+            <div class="col-md-4">
+                <h2 class="about-description">Shaves</h2>
+                <p class="about-description">Indulge in the timeless art of grooming with our premium shave service. Our skilled barbers use top-quality products and techniques to deliver a luxurious and refreshing experience, leaving you feeling impeccably polished and revitalized.</p>
+                <button class="btn btn-info" data-toggle="modal" data-target="#shaveModal">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="about-description">About Us</h2>
+                <p class="about-description">At Barber Hub, we've revolutionized the grooming experience. No more waiting in long queues for that perfect haircut. Our innovative booking solution puts you in control, allowing you to schedule your appointments effortlessly. Say goodbye to the hassle and embrace convenience with our streamlined booking system. Your time is valuable, and we ensure that every moment at Barber Hub is dedicated to crafting your ideal look without the wait.</p>
+            </div>
+            <div class="col-md-4">
+                <h2 class="about-description">Contact Us</h2>
+                <address>
+                    <strong>Barber Hub</strong><br>
+                    123 Brooklyn Street<br>
+                    Chicago 7689<br>
+                    <abbr title="Phone">Phone:</abbr> (001) 123-456-7890
+                </address>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentModalLabel">Book an Appointment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="serviceSelect">Select a Service:</label>
+                            <select class="form-control" id="serviceSelect" name="service">
+                                <option value="haircut">Hair Cut</option>
+                                <option value="beardTrim">Beard Trim</option>
+                                <option value="shave">Shave</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentDate">Select Date:</label>
+                            <input type="date" class="form-control" id="appointmentDate" name="appointmentDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="appointmentTime">Select Time:</label>
+                            <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" step="1800">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Book Appointment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
