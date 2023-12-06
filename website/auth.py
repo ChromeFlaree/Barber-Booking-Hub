@@ -1,3 +1,4 @@
+from email.mime import image
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_login import login_user, login_required, logout_user, current_user
 from . import db
@@ -66,7 +67,8 @@ def sign_up():
         elif password1 != password2:
             flash("⚠️ Passwords don't match. Please make sure the passwords match.", category='error')
         else:
-            new_user = User(email=email, first_name=firstName, password=sha256_crypt.hash(password1))
+            image = "https://i.pravatar.cc/200"
+            new_user = User(email=email, image=image, first_name=firstName, password=sha256_crypt.hash(password1))
             db.session.add(new_user)
             db.session.commit()
             flash("🎉 Account Created Successfully! Welcome to our community.", category='success')
