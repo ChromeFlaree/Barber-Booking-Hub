@@ -42,18 +42,41 @@ def book_appointment():
 
     return render_template("booking.html", user=current_user)
 
-@booking.route('/profile', methods=['GET', 'POST'])
+
+@booking.route('/update-booking/<int:booking_id>', methods=['GET', 'POST'])
 @login_required
-def profile():
-    bookings = Booking.query.filter_by(user_id=current_user.id).all()
+def update_booking(booking_id):
+    booking = Booking.query.get(booking_id)
 
     if request.method == "POST":
-        booking_id = request.form.get('cancel-booking')
-        if booking_id:
-            booking = Booking.query.get(int(booking_id))
-            db.session.delete(booking)
-            db.session.commit()
-            flash("👍 Your appointment has been cancelled!", category='success')
-            return redirect(url_for('booking.profile'))
+        date = request.form.get('appointmentDate')
+        if len(date) == 0:
+            flash("⚠️ Date cannot be empty. Please enter a valid date.", category='error')
+            return render_template("update_booking.html", user=current_user, booking=booking)
 
-    return render_template('profile.html', user=current_user, bookings=bookings)
+        time = request.form.get('appointmentTime')
+        if len(time) == 0:
+            flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
+            return render_template("update_booking.html", user=current_user, booking=booking)
+        
+        booking_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
+        if booking_datetime < datetime.now():
+            flash("⚠️ You cannot book an appointment in the past.", category='error')
+            return render_template("update_booking.html", user=current_user, booking=booking)
+        
+        # check if new date and time is already taken
+        booking_check = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
+        if booking_check:
+            flash("⚠️ You already have an appointment at this time.", category='error')
+            return render_template("update_booking.html", user=current_user, booking=booking)
+        
+        booking.date = date
+        booking.time = time
+        booking.service = request.form.get('service')
+        booking.price = SERVICES[booking.service]
+        
+        db.session.commit()
+        flash("🎉 Your appointment has been edited!", category='success')
+        return redirect(url_for('views.profile'))
+
+    return render_template("update_booking.html", user=current_user, booking=booking)
