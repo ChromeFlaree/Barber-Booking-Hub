@@ -1,13 +1,16 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
-@login_required
 def home():
     if request.method == "POST":
-        return redirect(url_for('booking.book_ticket'))
+        if current_user.is_authenticated:
+            return redirect(url_for('booking.book_appointment'))
+        else:
+            flash("⚠️ Please login to book an appointment.", category='error')
+            return redirect(url_for('auth.login'))
     return render_template("home.html", user=current_user)
 
 @views.route('/profile')

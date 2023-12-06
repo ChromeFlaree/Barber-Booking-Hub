@@ -7,9 +7,11 @@
         <div class="container">
             <h1 class="display-4">Welcome to Barber Hub - Where Style Meets Precision</h1>
             <p class="lead">Book your next cut and join the grooming revolution today.</p>
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#appointmentModal">
-                Book Appointment
-            </button>
+            <form method="POST">
+                <button class="btn btn-primary btn-lg" type="submit" name="book-appointment">
+                    Book Appointment
+                </button>
+            </form>
         </div>
     </div>
 
@@ -53,44 +55,6 @@
                     Chicago 7689<br>
                     <abbr title="Phone">Phone:</abbr> (001) 123-456-7890
                 </address>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="appointmentModal" tabindex="-1" role="dialog" aria-labelledby="appointmentModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="appointmentModalLabel">Book Appointment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="serviceSelect">Select a Service:</label>
-                            <select class="form-control" id="serviceSelect" name="service">
-                                <option value="haircut">Hair Cut - $25</option>
-                                <option value="beardTrim">Beard Trim - $15</option>
-                                <option value="shave">Shave - $20</option>
-                                <option value="combo1">Cut & Trim - $35</option>
-                                <option value="combo2">Cut & Shave - $40</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="appointmentDate">Select Date:</label>
-                            <input type="date" class="form-control" id="appointmentDate" name="appointmentDate">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="appointmentTime">Select Time:</label>
-                            <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" step="1800">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Book Appointment</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
