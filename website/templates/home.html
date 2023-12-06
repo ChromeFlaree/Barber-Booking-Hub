@@ -19,21 +19,21 @@
         <div class="row">
             <div class="col-md-4">
                 <h2 class="about-description">Hair Cuts</h2>
-                <p class="about-description">Discover our diverse range of expertly crafted haircuts, tailored to suit your style. From classic to contemporary, our skilled barbers ensure a sharp, fresh look with every visit. Book your appointment now and experience excellence.</p>
+                <img src="{{ url_for('static', filename='haircut.png') }}" alt="Haircut Image" class="img-fluid mb-3">
                 <button class="btn btn-info" data-toggle="modal" data-target="#haircutModal">
                     Learn More
                 </button>
             </div>
             <div class="col-md-4">
                 <h2 class="about-description">Beard Trims</h2>
-                <p class="about-description">Revamp your look with our expert beard trims at Barber Hub! Our skilled barbers specialize in precision grooming to sculpt, shape, and refine your facial hair, ensuring you leave with a sharp and stylish finish every time.</p>
+                <img src="{{ url_for('static', filename='beard_trim.png') }}" alt="Beard Trim Image" class="img-fluid mb-3">
                 <button class="btn btn-info" data-toggle="modal" data-target="#beardTrimModal">
                     Learn More
                 </button>
             </div>
             <div class="col-md-4">
                 <h2 class="about-description">Shaves</h2>
-                <p class="about-description">Indulge in the timeless art of grooming with our premium shave service. Our skilled barbers use top-quality products and techniques to deliver a luxurious and refreshing experience, leaving you feeling impeccably polished and revitalized.</p>
+                <img src="{{ url_for('static', filename='shave.png') }}" alt="Shave Image" class="img-fluid mb-3">
                 <button class="btn btn-info" data-toggle="modal" data-target="#shaveModal">
                     Learn More
                 </button>
@@ -55,6 +55,60 @@
                     Chicago 7689<br>
                     <abbr title="Phone">Phone:</abbr> (001) 123-456-7890
                 </address>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="haircutModal" tabindex="-1" role="dialog" aria-labelledby="haircutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Discover our diverse range of expertly crafted haircuts, tailored to suit your style. From classic to contemporary, our skilled barbers ensure a sharp, fresh look with every visit. Book your appointment now and experience excellence.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="beardTrimModal" tabindex="-1" role="dialog" aria-labelledby="beardTrimModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Revamp your look with our expert beard trims at Barber Hub! Our skilled barbers specialize in precision grooming to sculpt, shape, and refine your facial hair, ensuring you leave with a sharp and stylish finish every time.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="shaveModal" tabindex="-1" role="dialog" aria-labelledby="shaveModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Indulge in the timeless art of grooming with our premium shave service. Our skilled barbers use top-quality products and techniques to deliver a luxurious and refreshing experience, leaving you feeling impeccably polished and revitalized.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
