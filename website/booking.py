@@ -2,6 +2,7 @@ from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from .models import Booking, SERVICES
 from . import db
+from datetime import datetime
 
 booking = Blueprint('booking', __name__)
 
@@ -17,6 +18,16 @@ def book_appointment():
         time = request.form.get('appointmentTime')
         if len(time) == 0:
             flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
+            return render_template("booking.html", user=current_user)
+        
+        booking_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
+        if booking_datetime < datetime.now():
+            flash("⚠️ You cannot book an appointment in the past.", category='error')
+            return render_template("booking.html", user=current_user)
+        
+        booking = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
+        if booking:
+            flash("⚠️ You already have an appointment at this time.", category='error')
             return render_template("booking.html", user=current_user)
 
         service = request.form.get('service')
