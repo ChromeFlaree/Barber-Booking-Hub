@@ -47,22 +47,6 @@
     </nav>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const alerts = document.querySelectorAll(".alert");
-        
-        alerts.forEach(function(alert) {
-          setTimeout(function() {
-            alert.style.transition = "opacity 1s";
-            alert.style.opacity = "0";
-          }, 3000);
-    
-          setTimeout(function() {
-            alert.remove();
-          }, 4000);
-        });
-      });
-    </script>    
     
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
