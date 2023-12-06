@@ -1,11 +1,19 @@
 from . import db
 from flask_login import UserMixin
 
+SERVICES = {
+    "Haircut": 25,
+    "Beard Trim": 15,
+    "Shave": 20,
+    "Haircut & Beard Trim": 35,
+    "Haircut & Shave": 40
+}
 
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), unique=True)
+    image = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
     bookings = db.relationship('Booking')
