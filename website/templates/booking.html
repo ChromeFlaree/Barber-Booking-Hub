@@ -5,34 +5,26 @@
 
 <form method="POST">
     <div class="form-group">
-        <label for="date">Date</label>
-        <input
-            type="date"
-            class="form-control"
-            id="date"
-            name="date"
-            placeholder="Enter date"
-        />
-    </div>
-    <div class="form-group">
-        <label for="time">Time</label>
-        <input
-            type="time"
-            class="form-control"
-            id="time"
-            name="time"
-            placeholder="Enter time"
-        />
-    </div>
-    <div class="form-group">
-        <label for="service">Service</label>
-        <select class="form-control" id="service" name="service">
-            <option value="haircut">Haircut</option>
-            <option value="beard-trim">Beard Trim</option>
-            <option value="shave">Shave</option>
+        <label for="serviceSelect">Select a Service:</label>
+        <select class="form-control" id="serviceSelect" name="service">
+            <option value="Haircut">Hair Cut - ₹25</option>
+            <option value="Beard Trim">Beard Trim - ₹15</option>
+            <option value="Shave">Shave - ₹20</option>
+            <option value="Haircut & Beard Trim">Cut & Trim - ₹35</option>
+            <option value="Haircut & Shave">Cut & Shave - ₹40</option>
         </select>
     </div>
-    <br />
+    
+    <div class="form-group">
+        <label for="appointmentDate">Select Date:</label>
+        <input type="date" class="form-control" id="appointmentDate" name="appointmentDate">
+    </div>
+    
+    <div class="form-group">
+        <label for="appointmentTime">Select Time:</label>
+        <input type="time" class="form-control" id="appointmentTime" name="appointmentTime" step="1800">
+    </div>
+
     <button type="submit" class="btn btn-primary">Book Appointment</button>
 </form>
     
