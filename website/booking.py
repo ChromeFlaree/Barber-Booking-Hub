@@ -10,7 +10,15 @@ booking = Blueprint('booking', __name__)
 def book_appointment():
     if request.method == "POST":
         date = request.form.get('appointmentDate')
+        if len(date) == 0:
+            flash("⚠️ Date cannot be empty. Please enter a valid date.", category='error')
+            return render_template("booking.html", user=current_user)
+
         time = request.form.get('appointmentTime')
+        if len(time) == 0:
+            flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
+            return render_template("booking.html", user=current_user)
+
         service = request.form.get('service')
         price = SERVICES[service]
 
@@ -19,21 +27,22 @@ def book_appointment():
         db.session.commit()
 
         flash("🎉 Your appointment has been booked!", category='success')
-        return redirect(url_for('booking.my_bookings'))
+        return redirect(url_for('views.profile'))
+
     return render_template("booking.html", user=current_user)
 
-@booking.route('/my-bookings', methods=['GET', 'POST'])
+@booking.route('/profile', methods=['GET', 'POST'])
 @login_required
-def my_bookings():
+def profile():
     bookings = Booking.query.filter_by(user_id=current_user.id).all()
 
     if request.method == "POST":
         booking_id = request.form.get('cancel-booking')
-        booking = Booking.query.get(int(booking_id))
-        db.session.delete(booking)
-        db.session.commit()
+        if booking_id:
+            booking = Booking.query.get(int(booking_id))
+            db.session.delete(booking)
+            db.session.commit()
+            flash("👍 Your appointment has been cancelled!", category='success')
+            return redirect(url_for('booking.profile'))
 
-        flash("👍 Your appointment has been cancelled!", category='success')
-        return redirect(url_for('booking.my_bookings'))
-    return render_template("my_bookings.html", user=current_user, bookings=bookings)
-
+    return render_template('profile.html', user=current_user, bookings=bookings)
