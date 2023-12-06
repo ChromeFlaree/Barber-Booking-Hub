@@ -44,25 +44,37 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h2 class="about-description"><i class="fa-solid fa-scissors"></i> Hair Cuts</h2>
-                <img src="{{ url_for('static', filename='haircut.png') }}" alt="Haircut Image" class="img-fluid mb-3">
-                <button class="btn btn-info" data-toggle="modal" data-target="#haircutModal">
-                    Learn More
-                </button>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Hair Cuts</h2>
+                        <img src="{{ url_for('static', filename='haircut.png') }}" alt="Haircut Image" class="img-fluid mb-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#haircutModal">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h2 class="about-description"><i class="fa-solid fa-scissors"></i> Beard Trims</h2>
-                <img src="{{ url_for('static', filename='beard_trim.png') }}" alt="Beard Trim Image" class="img-fluid mb-3">
-                <button class="btn btn-info" data-toggle="modal" data-target="#beardTrimModal">
-                    Learn More
-                </button>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Beard Trims</h2>
+                        <img src="{{ url_for('static', filename='beard_trim.png') }}" alt="Beard Trim Image" class="img-fluid mb-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#beardTrimModal">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h2 class="about-description"><i class="fa-solid fa-scissors"></i> Shaves</h2>
-                <img src="{{ url_for('static', filename='shave.png') }}" alt="Shave Image" class="img-fluid mb-3">
-                <button class="btn btn-info" data-toggle="modal" data-target="#shaveModal">
-                    Learn More
-                </button>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Shaves</h2>
+                        <img src="{{ url_for('static', filename='shave.png') }}" alt="Shave Image" class="img-fluid mb-3">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#shaveModal">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -70,17 +82,25 @@
 
         <div class="row">
             <div class="col-md-8">
-                <h2 class="about-description">About Us</h2>
-                <p class="about-description">At Barber Hub, we've revolutionized the grooming experience. No more waiting in long queues for that perfect haircut. Our innovative booking solution puts you in control, allowing you to schedule your appointments effortlessly. Say goodbye to the hassle and embrace convenience with our streamlined booking system. Your time is valuable, and we ensure that every moment at Barber Hub is dedicated to crafting your ideal look without the wait.</p>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="card-title">About Us</h2>
+                        <p class="card-text">At Barber Hub, we've revolutionized the grooming experience. No more waiting in long queues for that perfect haircut. Our innovative booking solution puts you in control, allowing you to schedule your appointments effortlessly. Say goodbye to the hassle and embrace convenience with our streamlined booking system. Your time is valuable, and we ensure that every moment at Barber Hub is dedicated to crafting your ideal look without the wait.</p>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h2 class="about-description">Contact Us</h2>
-                <address>
-                    <strong>Barber Hub</strong><br>
-                    123 Brooklyn Street<br>
-                    Chicago 7689<br>
-                    <abbr title="Phone"><i class="fa-solid fa-phone"></i></abbr> (001) 123-456-7890
-                </address>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <h2 class="about-description">Contact Us</h2>
+                        <address>
+                            <strong>Barber Hub</strong><br>
+                            123 Brooklyn Street<br>
+                            Chicago 7689<br>
+                            <abbr title="Phone"><i class="fa-solid fa-phone"></i></abbr> (001) 123-456-7890
+                        </address>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
