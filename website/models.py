@@ -15,5 +15,5 @@ class Booking(db.Model):
     date = db.Column(db.String(10))
     time = db.Column(db.String(5))
     service = db.Column(db.String(150))
-    # price = db.Column(db.Numeric(10,2))
+    price = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
