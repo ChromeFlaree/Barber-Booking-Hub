@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 from .models import Booking, SERVICES
 from . import db
@@ -18,6 +18,7 @@ def book_appointment():
         db.session.add(new_booking)
         db.session.commit()
 
+        flash("🎉 Your appointment has been booked!", category='success')
         return redirect(url_for('booking.my_bookings'))
     return render_template("booking.html", user=current_user)
 
@@ -31,6 +32,8 @@ def my_bookings():
         booking = Booking.query.get(int(booking_id))
         db.session.delete(booking)
         db.session.commit()
+
+        flash("👍 Your appointment has been cancelled!", category='success')
         return redirect(url_for('booking.my_bookings'))
     return render_template("my_bookings.html", user=current_user, bookings=bookings)
 
