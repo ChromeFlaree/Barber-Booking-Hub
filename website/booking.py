@@ -20,11 +20,13 @@ def book_appointment():
             flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
             return render_template("booking.html", user=current_user)
         
+        # check if date and time is in the past
         booking_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
         if booking_datetime < datetime.now():
             flash("⚠️ You cannot book an appointment in the past.", category='error')
             return render_template("booking.html", user=current_user)
         
+        # check if date and time is already taken
         booking = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
         if booking:
             flash("⚠️ You already have an appointment at this time.", category='error')
@@ -59,20 +61,22 @@ def update_booking(booking_id):
             flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
+        # check if new date and time is in the past
         booking_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
         if booking_datetime < datetime.now():
             flash("⚠️ You cannot book an appointment in the past.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
-        # check if new date and time is already taken
-        booking_check = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
+        # check if same appointment already exists
+        service = request.form.get('service')
+        booking_check = Booking.query.filter_by(date=date, time=time, service=service, user_id=current_user.id).first()
         if booking_check:
-            flash("⚠️ You already have an appointment at this time.", category='error')
+            flash("⚠️ Duplicate Appointment.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
         booking.date = date
         booking.time = time
-        booking.service = request.form.get('service')
+        booking.service = service
         booking.price = SERVICES[booking.service]
         
         db.session.commit()

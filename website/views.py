@@ -8,6 +8,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == "POST":
+        # check if user is logged in
         if current_user.is_authenticated:
             return redirect(url_for('booking.book_appointment'))
         else:
