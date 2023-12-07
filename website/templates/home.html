@@ -1,162 +1,288 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="jumbotron jumbotron-fluid bg-dark text-white mt-4">
+  <div class="container">
+    <h1 class="display-4">
+      Welcome to Barber Hub - Where Style Meets Precision
+    </h1>
+    <form method="POST">
+      <button
+        class="btn btn-primary btn-lg"
+        type="submit"
+        name="book-appointment"
+      >
+        Book Appointment
+      </button>
+    </form>
+  </div>
+</div>
 
-{% block title %}Home{% endblock %}
-
-{% block content %}
-    <div class="jumbotron jumbotron-fluid bg-dark text-white mt-4">
-        <div class="container">
-            <h1 class="display-4">Welcome to Barber Hub - Where Style Meets Precision</h1>
-            <form method="POST">
-                <button class="btn btn-primary btn-lg" type="submit" name="book-appointment">
-                    Book Appointment
-                </button>
-            </form>
-        </div>
+<div id="carouselExample" class="carousel slide mb-4" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{{ url_for('static', filename='slide1.jpg') }}"
+        class="img-fluid custom-image"
+        alt="Slide 1"
+      />
+      <div class="carousel-overlay"></div>
+      <div class="overlay-text">
+        <h3>
+          Barber Hub – Where Every Haircut is a Canvas, Every Trim a
+          Masterpiece. Step into a World of Precision Grooming, Seamless
+          Appointments, and Limitless Style Possibilities.
+        </h3>
+      </div>
     </div>
-
-    <div id="carouselExample" class="carousel slide mb-4" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ url_for('static', filename='slide1.jpg') }}" class="img-fluid custom-image" alt="Slide 1">
-                <div class="carousel-overlay"></div>
-                <div class="overlay-text">
-                    <h2>Barber Hub – Where Every Haircut is a Canvas, Every Trim a Masterpiece. Step into a World of Precision Grooming, Seamless Appointments, and Limitless Style Possibilities. Our Skilled Barbers Craft Stories, Not Just Haircuts. Experience the Fusion of Tradition and Innovation, Where Your Style Journey Begins.</h2>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ url_for('static', filename='slide2.jpg') }}" class="img-fluid custom-image" alt="Slide 2">
-                <div class="carousel-overlay"></div>
-                <div class="overlay-text">
-                    <h2>Revolutionizing the Barber Experience - Say Goodbye to Long Waits and Hello to Instant Style. Barber Hub's Solution is Simple – Your Time is Now Valued, Your Appointment, Your Way. Skip the Queue, Embrace the Future. Welcome to a World Where Waiting is a Thing of the Past, and Every Visit is Swift, Stylish, and Seamlessly Scheduled.</h2>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+    <div class="carousel-item">
+      <img
+        src="{{ url_for('static', filename='slide2.jpg') }}"
+        class="img-fluid custom-image"
+        alt="Slide 2"
+      />
+      <div class="carousel-overlay"></div>
+      <div class="overlay-text">
+        <h3>
+          Revolutionizing the Barber Experience - Say Goodbye to Long Waits and
+          Hello to Instant Style. Barber Hub's Solution is Simple – Your Time is
+          Now Valued, Your Appointment, Your Way. Skip the Queue, Embrace the
+          Future.
+        </h3>
+      </div>
     </div>
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExample"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExample"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Hair Cuts</h2>
-                        <img src="{{ url_for('static', filename='haircut.png') }}" alt="Haircut Image" class="img-fluid mb-3">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#haircutModal">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Beard Trims</h2>
-                        <img src="{{ url_for('static', filename='beard_trim.png') }}" alt="Beard Trim Image" class="img-fluid mb-3">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#beardTrimModal">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h2 class="card-title"><i class="fa-solid fa-scissors"></i> Shaves</h2>
-                        <img src="{{ url_for('static', filename='shave.png') }}" alt="Shave Image" class="img-fluid mb-3">
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#shaveModal">
-                            Learn More
-                        </button>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h2 class="card-title">
+            <i class="fa-solid fa-scissors"></i> Hair Cuts
+          </h2>
+          <img
+            src="{{ url_for('static', filename='haircut.png') }}"
+            alt="Haircut Image"
+            class="img-fluid mb-3"
+          />
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#haircutModal"
+          >
+            Learn More
+          </button>
         </div>
-
-        <hr>
-
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h2 class="card-title">About Us</h2>
-                        <p class="card-text">At Barber Hub, we've revolutionized the grooming experience. No more waiting in long queues for that perfect haircut. Our innovative booking solution puts you in control, allowing you to schedule your appointments effortlessly. Say goodbye to the hassle and embrace convenience with our streamlined booking system. Your time is valuable, and we ensure that every moment at Barber Hub is dedicated to crafting your ideal look without the wait.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <h2 class="about-description">Contact Us</h2>
-                        <address>
-                            <strong>Barber Hub</strong><br>
-                            123 Brooklyn Street<br>
-                            Chicago 7689<br>
-                            <abbr title="Phone"><i class="fa-solid fa-phone"></i></abbr> (001) 123-456-7890
-                        </address>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h2 class="card-title">
+            <i class="fa-solid fa-scissors"></i> Beard Trims
+          </h2>
+          <img
+            src="{{ url_for('static', filename='beard_trim.png') }}"
+            alt="Beard Trim Image"
+            class="img-fluid mb-3"
+          />
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#beardTrimModal"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h2 class="card-title">
+            <i class="fa-solid fa-scissors"></i> Shaves
+          </h2>
+          <img
+            src="{{ url_for('static', filename='shave.png') }}"
+            alt="Shave Image"
+            class="img-fluid mb-3"
+          />
+          <button
+            class="btn btn-primary"
+            data-toggle="modal"
+            data-target="#shaveModal"
+          >
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="modal fade" id="haircutModal" tabindex="-1" role="dialog" aria-labelledby="haircutModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Discover our diverse range of expertly crafted haircuts, tailored to suit your style. From classic to contemporary, our skilled barbers ensure a sharp, fresh look with every visit. Book your appointment now and experience excellence.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+  <hr />
 
-    <div class="modal fade" id="beardTrimModal" tabindex="-1" role="dialog" aria-labelledby="beardTrimModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Revamp your look with our expert beard trims at Barber Hub! Our skilled barbers specialize in precision grooming to sculpt, shape, and refine your facial hair, ensuring you leave with a sharp and stylish finish every time.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h2 class="card-title">About Us</h2>
+          <p class="card-text">
+            At Barber Hub, we've revolutionized the grooming experience. No more
+            waiting in long queues for that perfect haircut. Our innovative
+            booking solution puts you in control, allowing you to schedule your
+            appointments effortlessly. Say goodbye to the hassle and embrace
+            convenience with our streamlined booking system. Your time is
+            valuable, and we ensure that every moment at Barber Hub is dedicated
+            to crafting your ideal look without the wait.
+          </p>
         </div>
+      </div>
     </div>
-    
-    <div class="modal fade" id="shaveModal" tabindex="-1" role="dialog" aria-labelledby="shaveModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Indulge in the timeless art of grooming with our premium shave service. Our skilled barbers use top-quality products and techniques to deliver a luxurious and refreshing experience, leaving you feeling impeccably polished and revitalized.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+    <div class="col-md-4">
+      <div class="card bg-dark text-white">
+        <div class="card-body">
+          <h2 class="about-description">Contact Us</h2>
+          <address>
+            <strong>Barber Hub</strong><br />
+            123 KIIT Road<br />
+            Bhubaneswar 7689<br />
+            <abbr title="Phone"><i class="fa-solid fa-phone"></i></abbr>
+            123-456-7890
+          </address>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="haircutModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="haircutModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Discover our diverse range of expertly crafted haircuts, tailored to
+          suit your style. From classic to contemporary, our skilled barbers
+          ensure a sharp, fresh look with every visit. Book your appointment now
+          and experience excellence.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="beardTrimModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="beardTrimModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Revamp your look with our expert beard trims at Barber Hub! Our
+          skilled barbers specialize in precision grooming to sculpt, shape, and
+          refine your facial hair, ensuring you leave with a sharp and stylish
+          finish every time.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="shaveModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="shaveModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Indulge in the timeless art of grooming with our premium shave
+          service. Our skilled barbers use top-quality products and techniques
+          to deliver a luxurious and refreshing experience, leaving you feeling
+          impeccably polished and revitalized.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
