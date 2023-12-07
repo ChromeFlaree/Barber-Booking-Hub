@@ -67,15 +67,16 @@ def update_booking(booking_id):
             flash("⚠️ You cannot book an appointment in the past.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
-        # check if new date and time is already taken
-        booking_check = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
+        # check if same appointment already exists
+        service = request.form.get('service')
+        booking_check = Booking.query.filter_by(date=date, time=time, service=service, user_id=current_user.id).first()
         if booking_check:
-            flash("⚠️ You already have an appointment at this time.", category='error')
+            flash("⚠️ Duplicate Appointment.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
         booking.date = date
         booking.time = time
-        booking.service = request.form.get('service')
+        booking.service = service
         booking.price = SERVICES[booking.service]
         
         db.session.commit()
