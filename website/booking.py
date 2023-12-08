@@ -52,14 +52,7 @@ def update_booking(booking_id):
 
     if request.method == "POST":
         date = request.form.get('appointmentDate')
-        if len(date) == 0:
-            flash("⚠️ Date cannot be empty. Please enter a valid date.", category='error')
-            return render_template("update_booking.html", user=current_user, booking=booking)
-
         time = request.form.get('appointmentTime')
-        if len(time) == 0:
-            flash("⚠️ Time cannot be empty. Please enter a valid time.", category='error')
-            return render_template("update_booking.html", user=current_user, booking=booking)
         
         # check if new date and time is in the past
         booking_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
@@ -71,7 +64,7 @@ def update_booking(booking_id):
         service = request.form.get('service')
         booking_check = Appointment.query.filter_by(date=date, time=time, service=service, user_id=current_user.id).first()
         if booking_check:
-            flash("⚠️ Duplicate Appointment.", category='error')
+            flash("⚠️ You already have a same appointment at this time.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
         
         booking.date = date
@@ -80,7 +73,14 @@ def update_booking(booking_id):
         booking.price = SERVICES[booking.service]
         
         db.session.commit()
-        flash("🎉 Your appointment has been edited!", category='success')
+        flash("🎉 Your appointment has been updated!", category='success')
         return redirect(url_for('views.profile'))
 
     return render_template("update_booking.html", user=current_user, booking=booking)
+
+def cancel_booking(booking_id):
+    booking = Appointment.query.get(booking_id)
+    db.session.delete(booking)
+    db.session.commit()
+    flash("🗑️ Your appointment has been cancelled!", category='info')
+    return redirect(url_for('views.profile'))
