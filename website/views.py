@@ -1,6 +1,6 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
-from .models import Booking
+from .models import Appointment
 from . import db
 
 views = Blueprint('views', __name__)
@@ -37,7 +37,7 @@ def profile():
         # check if cancel booking button was clicked
         if request.form.get('cancel-booking'):
             booking_id = request.form.get('cancel-booking')
-            booking = Booking.query.get(booking_id)
+            booking = Appointment.query.get(booking_id)
             db.session.delete(booking)
             db.session.commit()
             flash("🗑️ Your appointment has been cancelled!", category='info')
@@ -46,7 +46,7 @@ def profile():
         # check if edit booking button was clicked
         if request.form.get('update-booking'):
             booking_id = request.form.get('update-booking')
-            booking = Booking.query.get(booking_id)
+            booking = Appointment.query.get(booking_id)
             return redirect(url_for('booking.update_booking', booking_id=booking.id))
         
     return render_template('profile.html', user=current_user, bookings=bookings)

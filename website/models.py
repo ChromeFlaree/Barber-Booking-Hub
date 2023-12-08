@@ -16,9 +16,9 @@ class User(db.Model, UserMixin):
     image = db.Column(db.String(150))
     first_name = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    bookings = db.relationship('Booking')
+    bookings = db.relationship('Appointment')
 
-class Booking(db.Model):
+class Appointment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.String(10))
     time = db.Column(db.String(5))

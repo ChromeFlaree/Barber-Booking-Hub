@@ -1,6 +1,6 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
 from flask_login import login_required, current_user
-from .models import Booking, SERVICES
+from .models import Appointment, SERVICES
 from . import db
 from datetime import datetime
 
@@ -27,7 +27,7 @@ def book_appointment():
             return render_template("booking.html", user=current_user)
         
         # check if date and time is already taken
-        booking = Booking.query.filter_by(date=date, time=time, user_id=current_user.id).first()
+        booking = Appointment.query.filter_by(date=date, time=time, user_id=current_user.id).first()
         if booking:
             flash("⚠️ You already have an appointment at this time.", category='error')
             return render_template("booking.html", user=current_user)
@@ -35,7 +35,7 @@ def book_appointment():
         service = request.form.get('service')
         price = SERVICES[service]
 
-        new_booking = Booking(date=date, time=time, service=service, price=price, user_id=current_user.id)
+        new_booking = Appointment(date=date, time=time, service=service, price=price, user_id=current_user.id)
         db.session.add(new_booking)
         db.session.commit()
 
@@ -48,7 +48,7 @@ def book_appointment():
 @booking.route('/update-booking/<int:booking_id>', methods=['GET', 'POST'])
 @login_required
 def update_booking(booking_id):
-    booking = Booking.query.get(booking_id)
+    booking = Appointment.query.get(booking_id)
 
     if request.method == "POST":
         date = request.form.get('appointmentDate')
@@ -69,7 +69,7 @@ def update_booking(booking_id):
         
         # check if same appointment already exists
         service = request.form.get('service')
-        booking_check = Booking.query.filter_by(date=date, time=time, service=service, user_id=current_user.id).first()
+        booking_check = Appointment.query.filter_by(date=date, time=time, service=service, user_id=current_user.id).first()
         if booking_check:
             flash("⚠️ Duplicate Appointment.", category='error')
             return render_template("update_booking.html", user=current_user, booking=booking)
